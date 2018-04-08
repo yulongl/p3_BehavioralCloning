@@ -60,11 +60,11 @@ model.add(Lambda(lambda x: x/255.0 - 0.5,
         input_shape=(row, col, ch),
         output_shape=(row, col, ch)))
 model.add(Cropping2D(cropping=((60, 25), (0, 0))))
-model.add(Conv2D(24, (5, 5), strides=(2, 2), padding='valid', activation="relu"))  # 65 320 => 31 158
-model.add(Conv2D(36, (5, 5), strides=(2, 2), padding='valid', activation="relu"))  # 31 158 => 14 77
-model.add(Conv2D(48, (5, 5), strides=(2, 2), padding='valid', activation="relu"))  # 14 77 => 5 37
-model.add(Conv2D(64, (3, 3), strides=(1, 1), padding='valid', activation="relu"))  # 5 37 => 3 35
-model.add(Conv2D(64, (3, 3), strides=(1, 1), padding='valid', activation="relu"))  # 3 35 => 1 33
+model.add(Conv2D(24, (5, 5), strides=(2, 2), padding='valid', activation="relu"))  # 75 320 => 36 158
+model.add(Conv2D(36, (5, 5), strides=(2, 2), padding='valid', activation="relu"))  # 36 158 => 16 77
+model.add(Conv2D(48, (5, 5), strides=(2, 2), padding='valid', activation="relu"))  # 16 77 => 6 37
+model.add(Conv2D(64, (3, 3), strides=(1, 1), padding='valid', activation="relu"))  # 6 37 => 4 35
+model.add(Conv2D(64, (3, 3), strides=(1, 1), padding='valid', activation="relu"))  # 4 35 => 2 33
 model.add(Flatten())
 model.add(Dense(200))
 model.add(Dropout(0.5))
