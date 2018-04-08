@@ -96,6 +96,6 @@ plt.xlabel('epoch')
 plt.legend(['training set', 'validation set'], loc='upper right')
 plt.show()
 
-model.save('model2.h5')
+model.save('model.h5')
 
 #model = load_model('my_model.h5')
