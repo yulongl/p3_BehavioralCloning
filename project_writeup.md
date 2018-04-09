@@ -47,20 +47,29 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-Below is my model visualization. The model starts with three 5x5 convolutional layers with a stride size of (2, 2) and VALID padding, following by two 3x3 convolutional layers with a stride size of (1, 1) and also VALID padding. RELU has been applied to all the convolutional layers. After a flatten layer, there are five fully connected layers. Two dropout layers have been applied among them to reduce overfitting.  
+I started with the NVIDIA CNN architecture:
 
-![model](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/model.png)
+_"The first layer of the network performs image normalization. The normalizer is hard-coded and is not adjusted in the learning process. Performing normalization in the network allows the normalization scheme to be altered with the network architecture, and to be accelerated via GPU processing._
 
+_"The convolutional layers are designed to perform feature extraction, and are chosen empirically through a series of experiments that vary layer configurations. We then use strided convolutions in the first three convolutional layers with a 2×2 stride and a 5×5 kernel, and a non-strided convolution with a 3×3 kernel size in the final two convolutional layers._
+
+_"We follow the five convolutional layers with three fully connected layers, leading to a final output control value which is the inverse-turning-radius. The fully connected layers are designed to function as a controller for steering, but we noted that by training the system end-to-end, it is not possible to make a clean break between which parts of the network function primarily as feature extractor, and which serve as controller._  
+                                                                  - From https://devblogs.nvidia.com/deep-learning-self-driving-cars/
+
+The model starts with three 5x5 convolutional layers with a stride size of (2, 2) and VALID padding, following by two 3x3 convolutional layers with a stride size of (1, 1) and also VALID padding. RELU has been applied to all the convolutional layers. After a flatten layer, there are five fully connected layers. Two dropout layers have been applied among them to reduce overfitting. Below is the model visualization.  
+
+![nvidia_cnn](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/nvidia_cnn.png)
+  
 
 #### 2. Attempts to reduce overfitting in the model
 
-The model contains dropout layers in order to reduce overfitting (model.py lines 21). 
+The model contains two dropout layers in order to reduce overfitting (model.py lines 70 and 72). 
 
-The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 10-16). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+The model was trained and validated on different data sets to ensure that the model was not overfitting. The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
 #### 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 25).
+The model used an RMSprop optimizer. I made the learning rate adjustable but I didn't change it - still using the default 0.001 learning rate.  
 
 #### 4. Appropriate training data
 
@@ -88,11 +97,9 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 #### 2. Final Model Architecture
 
-The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes ...
+The model starts with three 5x5 convolutional layers with a stride size of (2, 2) and VALID padding, following by two 3x3 convolutional layers with a stride size of (1, 1) and also VALID padding. RELU has been applied to all the convolutional layers. After a flatten layer, there are five fully connected layers. Two dropout layers have been applied among them to reduce overfitting. Below is the model visualization.  
 
-Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
-
-![alt text][image1]
+![model](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/model.png)
 
 #### 3. Creation of the Training Set & Training Process
 
