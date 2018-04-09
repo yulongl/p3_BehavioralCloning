@@ -8,4 +8,4 @@ video.py: used for creating video. Not modified.
 run2_part1.mp4: recorded video in autonomous mode. Part 1.  
 run2_part2.mp4: recorded video in autonomous mode. Part 2.  
 
-Because the size of the recorded video exceeded GitHub's limit, it was split into two parts. Part 1 + part 1 = a full lap on track one.  
+Because the size of the recorded video exceeded GitHub's limit, it was split into two parts. Part 1 + part 2 = a full lap on track one.  
