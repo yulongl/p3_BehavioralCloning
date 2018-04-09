@@ -82,7 +82,7 @@ For details about how I created the training data, see the next section.
 
 #### 1. Solution Design Approach
 
-The overall strategy for deriving a model architecture was to modify and implement the NVIDIA CNN architecture mentioned in **An appropriate model architecture has been employed** above.   
+The overall strategy for deriving a model architecture was to modify and implement the NVIDIA CNN architecture mentioned in **"An appropriate model architecture has been employed"** above.   
 
 Two more fully connected layers were added because the size of the flatten layer was way more than the NVIDIA CNN.
 
@@ -106,7 +106,7 @@ Even though the tutorial suggested to drive in center, I still wanted the car to
 
 ![center_2018_04_03_20_48_50_878.jpg](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/center_2018_04_03_20_48_50_878.jpg)
 
-I then recorded the vehicle been driven on center lane on both track one:
+I then recorded the vehicle driven on center lane on track one:
 
 ![center_2018_04_03_21_16_48_321.jpg](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/center_2018_04_03_21_16_48_321.jpg)  
 
