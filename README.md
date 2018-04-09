@@ -4,7 +4,7 @@ model.py: project codes.
 model.h5: saved model.  
 project_writeup.md: project write-up.  
 drive.py: original drive.py, used for driving the vehicle in autonomous mode. Not modified.  
-video.py: used for creating video. Not modified.
+video.py: used for creating video. Not modified.  
 run2_part1.mp4: recorded video in autonomous mode. Part 1.  
 run2_part2.mp4: recorded video in autonomous mode. Part 2.  
 
