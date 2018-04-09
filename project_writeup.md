@@ -51,7 +51,8 @@ I started with the NVIDIA CNN architecture:
 
 ![nvidia_cnn](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/nvidia_cnn.png)
   
-From https://devblogs.nvidia.com/deep-learning-self-driving-cars/  
+From https://devblogs.nvidia.com/deep-learning-self-driving-cars:  
+
 _"The first layer of the network performs image normalization. The normalizer is hard-coded and is not adjusted in the learning process. Performing normalization in the network allows the normalization scheme to be altered with the network architecture, and to be accelerated via GPU processing._
 
 _"The convolutional layers are designed to perform feature extraction, and are chosen empirically through a series of experiments that vary layer configurations. We then use strided convolutions in the first three convolutional layers with a 2×2 stride and a 5×5 kernel, and a non-strided convolution with a 3×3 kernel size in the final two convolutional layers._
@@ -80,17 +81,15 @@ For details about how I created the training data, see the next section.
 
 #### 1. Solution Design Approach
 
-The overall strategy for deriving a model architecture was to ...
+The overall strategy for deriving a model architecture was to modify and implement the NVIDIA CNN architecture mentioned in **An appropriate model architecture has been employed** above.   
 
-My first step was to use a convolution neural network model similar to the ... I thought this model might be appropriate because ...
+Two more fully connected layers were added because the size of the flatten layer was way more than the NVIDIA CNN.
 
-In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
+Image and steering angle data were split into a training and validation set in a ratio of 8:2. I found that the first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
 
-To combat the overfitting, I modified the model so that ...
+To combat the overfitting, I added two dropout layers with a dropout rate of 0.5, which significantly improved the performance.  
 
-Then I ... 
-
-The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track... to improve the driving behavior in these cases, I ....
+When I run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track. To improve the driving behavior in these cases, I generated more training data which taught the model how to drive back to center.  
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
@@ -98,32 +97,38 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 The model starts with three 5x5 convolutional layers with a stride size of (2, 2) and VALID padding, following by two 3x3 convolutional layers with a stride size of (1, 1) and also VALID padding. RELU has been applied to all the convolutional layers. After a flatten layer, there are five fully connected layers. Two dropout layers have been applied among them to reduce overfitting. Below is the model visualization.  
 
-![model](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/model.png)
+![model](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/model.png)  
 
 #### 3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
+Even though the tutorial suggested to drive in center, I still wanted the car to be driven like a professional racer, who always picked the best and the most efficient routes. Below is an example:
 
-![alt text][image2]
+![center_2018_04_03_20_48_50_878.jpg](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/center_2018_04_03_20_48_50_878.jpg)
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
+I then recorded the vehicle been driven on center lane on both track one:
 
-![alt text][image3]
-![alt text][image4]
-![alt text][image5]
+![center_2018_04_03_21_16_48_321.jpg](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/center_2018_04_03_21_16_48_321.jpg)  
 
-Then I repeated this process on track two in order to get more data points.
-
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
-
-![alt text][image6]
-![alt text][image7]
-
-Etc ....
-
-After the collection process, I had X number of data points. I then preprocessed this data by ...
+![center_2018_04_03_21_17_10_787.jpg](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/center_2018_04_03_21_17_10_787.jpg)  
 
 
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
+I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to come back to center:
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+![center_2018_04_07_22_45_51_208.jpg](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/center_2018_04_07_22_45_51_208.jpg)  
+
+![center_2018_04_07_22_45_51_986.jpg](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/center_2018_04_07_22_45_51_986.jpg)  
+
+
+Then I repeated this process on track two in order to get more data points:  
+
+![center_2018_04_03_21_27_27_846.jpg](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/center_2018_04_03_21_27_27_846.jpg)  
+
+![center_2018_04_03_23_26_32_307.jpg](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/center_2018_04_03_23_26_32_307.jpg)  
+
+
+After the collection process, I had **16468** number of data points. I then preprocessed this data by normalization.
+
+
+I finally randomly shuffled the data set and put 20% of the data into a validation set. 
+
+
