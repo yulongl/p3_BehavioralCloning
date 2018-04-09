@@ -47,9 +47,10 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
+Below is my model visualization. The model starts with three 5x5 convolutional layers with a stride size of (2, 2) and VALID padding, following by two 3x3 convolutional layers with a stride size of (1, 1) and also VALID padding. RELU has been applied to all the convolutional layers. After a flatten layer, there are five fully connected layers. Two dropout layers have been applied among them to reduce overfitting.  
 
-The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
+![model](https://github.com/yulongl/p3_BehavioralCloning/blob/master/pic/model.png)
+
 
 #### 2. Attempts to reduce overfitting in the model
 
